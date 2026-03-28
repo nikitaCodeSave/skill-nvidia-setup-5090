@@ -117,28 +117,35 @@ The skill handles these common issues automatically:
 ## Project structure
 
 ```
-SKILL.md                                 # Main skill definition
-references/
-  version-matrix.md                      # Driver/CUDA/PyTorch compatibility
-  diagnostic-commands.md                 # Phase 1 & 7 command sets
-  install-guide.md                       # Fresh install procedure
-  troubleshooting.md                     # Common problems and solutions
-  docker-gpu.md                          # Docker GPU passthrough setup
-  vllm-setup.md                          # vLLM installation guide
-  versions-baseline.template.md          # Template for tracking system state
+README.md
+nvidia-setup/                            # <- copy this folder to ~/.claude/skills/
+  SKILL.md                               # Main skill definition
+  references/
+    version-matrix.md                    # Driver/CUDA/PyTorch compatibility
+    diagnostic-commands.md               # Phase 1 & 7 command sets
+    install-guide.md                     # Fresh install procedure
+    troubleshooting.md                   # Common problems and solutions
+    docker-gpu.md                        # Docker GPU passthrough setup
+    vllm-setup.md                        # vLLM installation guide
+    versions-baseline.template.md        # Template for tracking system state
 ```
 
 ## Installation
 
-Copy or symlink to your Claude Code skills directory:
+Clone the repo and copy the `nvidia-setup` folder into your Claude Code skills directory:
 
 ```bash
-# Option 1: symlink
-ln -s /path/to/skill-nvidia-setup-5090 ~/.claude/skills/nvidia-setup
-
-# Option 2: copy
-cp -r /path/to/skill-nvidia-setup-5090 ~/.claude/skills/nvidia-setup
+git clone https://github.com/nikitaCodeSave/skill-nvidia-setup-5090.git
+cp -r skill-nvidia-setup-5090/nvidia-setup ~/.claude/skills/
 ```
+
+Or symlink if you prefer to pull updates via `git pull`:
+
+```bash
+ln -s "$(pwd)/skill-nvidia-setup-5090/nvidia-setup" ~/.claude/skills/nvidia-setup
+```
+
+After that, the `/nvidia-setup` command becomes available in Claude Code.
 
 ## License
 
